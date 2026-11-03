@@ -53,11 +53,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onNavigate, onOpe
           className="group flex items-center gap-2.5 text-left text-white"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#635BFF] text-white font-black text-sm tracking-tighter shadow-md group-hover:scale-105 transition-transform">
-            K
+            N
           </span>
           <div className="flex flex-col">
             <span className="font-extrabold tracking-tight text-white text-base leading-none">
-              {settings.logoText || settings.siteName || 'KINETIC / EDITS'}
+              {settings.logoText || settings.siteName || 'NAOL / EDITS'}
             </span>
             <span className="text-[10px] font-medium tracking-widest text-[#B9F45A] uppercase mt-0.5">
               Post-Production

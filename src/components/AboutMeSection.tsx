@@ -76,7 +76,7 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ onWorkTogether }
                 <div className="absolute top-3 right-3 z-20">
                   <label className="cursor-pointer inline-flex items-center gap-1.5 rounded-full bg-[#15171C]/85 hover:bg-[#635BFF] text-white border border-white/20 px-3 py-1.5 text-xs font-bold shadow-xl backdrop-blur-md transition-all active:scale-95">
                     <Camera className="h-3.5 w-3.5 text-[#B9F45A]" />
-                    <span>{isUploading ? 'Uploading...' : 'Change Photo'}</span>
+                    
                     <input
                       type="file"
                       accept="image/*"
@@ -179,7 +179,7 @@ export const AboutMeSection: React.FC<AboutMeSectionProps> = ({ onWorkTogether }
             {/* Specialties */}
             <div className="rounded-2xl bg-[#F8F9FB] border border-[#E8EAF0] p-6">
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#737783] mb-3 flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-[#B9F45A]" />
+                
                 <span>Core Editing Specialties</span>
               </h3>
               <p className="text-sm sm:text-base text-[#15171C] leading-relaxed">

@@ -135,11 +135,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSite }) 
       <header className="border-b border-[#2B2E38] bg-[#1C1F26] px-6 py-4 flex items-center justify-between sticky top-0 z-40">
         <div className="flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#635BFF] text-white font-black text-sm">
-            K
+            N
           </span>
           <div>
             <h1 className="text-base font-bold text-white leading-none">
-              KINETIC CMS
+              NAOL DASHBOARD
             </h1>
             <span className="text-[11px] font-mono text-[#B9F45A]">
               Editor Production Suite

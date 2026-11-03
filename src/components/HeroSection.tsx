@@ -120,76 +120,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onExploreWork, onWorkT
           </div>
 
           {/* Admin Direct Photo & Mode Quick Controls */}
-          {isAdmin && (
-            <div className="flex flex-wrap items-center justify-center gap-2 p-2 rounded-2xl bg-black/75 border border-[#635BFF]/50 shadow-2xl backdrop-blur-md animate-in fade-in">
-              <span className="text-[10px] font-mono text-[#B9F45A] uppercase px-2 font-bold">
-                Admin Quick Edit:
-              </span>
-
-              {/* Direct Photo Uploader */}
-              <label className="cursor-pointer inline-flex items-center gap-1.5 rounded-xl bg-[#635BFF] hover:bg-[#5248e5] px-3 py-1.5 text-xs font-bold text-white shadow-md transition-all active:scale-95">
-                <Camera className="h-3.5 w-3.5" />
-                <span>{isUploadingPhoto ? 'Uploading...' : 'Change Background Photo'}</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  disabled={isUploadingPhoto}
-                  className="hidden"
-                  onChange={async (e) => {
-                    const file = e.target.files?.[0];
-                    if (file) {
-                      setIsUploadingPhoto(true);
-                      try {
-                        const res = await uploadFile(file);
-                        if (res?.url) {
-                          await updateSettings({ heroImageUrl: res.url, heroBgMode: 'image' });
-                          setUploadMessage('Photo updated & set to Image Mode!');
-                          setTimeout(() => setUploadMessage(null), 4000);
-                        }
-                      } catch (err) {
-                        alert(err instanceof Error ? err.message : 'Photo upload failed');
-                      } finally {
-                        setIsUploadingPhoto(false);
-                      }
-                    }
-                  }}
-                />
-              </label>
-
-              {/* Toggle to Image Mode */}
-              <button
-                onClick={() => {
-                  updateSettings({ heroBgMode: 'image' });
-                  setUploadMessage('Switched to Photo Mode');
-                  setTimeout(() => setUploadMessage(null), 3000);
-                }}
-                className={`inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-medium transition-colors ${
-                  settings.heroBgMode === 'image'
-                    ? 'bg-white/20 text-white font-bold'
-                    : 'text-[#C5CAD4] hover:bg-white/10'
-                }`}
-              >
-                <span>Photo Mode</span>
-              </button>
-
-              {/* Toggle to Video Mode */}
-              <button
-                onClick={() => {
-                  updateSettings({ heroBgMode: 'video' });
-                  setUploadMessage('Switched to Video Mode');
-                  setTimeout(() => setUploadMessage(null), 3000);
-                }}
-                className={`inline-flex items-center gap-1 rounded-xl px-2.5 py-1.5 text-xs font-medium transition-colors ${
-                  settings.heroBgMode === 'video'
-                    ? 'bg-white/20 text-white font-bold'
-                    : 'text-[#C5CAD4] hover:bg-white/10'
-                }`}
-              >
-                <Video className="h-3 w-3" />
-                <span>Video Mode</span>
-              </button>
-            </div>
-          )}
+          
 
           {uploadMessage && (
             <div className="text-xs font-semibold text-[#B9F45A] bg-[#B9F45A]/20 border border-[#B9F45A]/40 px-3 py-1 rounded-lg animate-in fade-in">

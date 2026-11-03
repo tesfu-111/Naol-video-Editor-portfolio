@@ -225,7 +225,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <input
                         type="text"
                         required
-                        placeholder="Alex Morgan"
+                        placeholder="Naol Morgan"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         className="w-full rounded-xl border border-[#E8EAF0] bg-[#F8F9FB] px-4 py-3 text-sm text-[#15171C] outline-none focus:border-[#635BFF] focus:bg-white focus:ring-2 focus:ring-[#635BFF]/15 transition-all"
@@ -240,7 +240,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       <input
                         type="email"
                         required
-                        placeholder="alex@company.com"
+                        placeholder="naol@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full rounded-xl border border-[#E8EAF0] bg-[#F8F9FB] px-4 py-3 text-sm text-[#15171C] outline-none focus:border-[#635BFF] focus:bg-white focus:ring-2 focus:ring-[#635BFF]/15 transition-all"
@@ -256,7 +256,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. Apex Media or YouTube Channel"
+                        placeholder="e.g. Naol Media or YouTube Channel"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
                         className="w-full rounded-xl border border-[#E8EAF0] bg-[#F8F9FB] px-4 py-3 text-sm text-[#15171C] outline-none focus:border-[#635BFF] focus:bg-white focus:ring-2 focus:ring-[#635BFF]/15 transition-all"
@@ -296,7 +296,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. $1,500 - $3,000 or Monthly Retainer"
+                        placeholder="e.g. $100 - $300 or Monthly Retainer"
                         value={budget}
                         onChange={(e) => setBudget(e.target.value)}
                         className="w-full rounded-xl border border-[#E8EAF0] bg-[#F8F9FB] px-4 py-3 text-sm text-[#15171C] outline-none focus:border-[#635BFF] focus:bg-white focus:ring-2 focus:ring-[#635BFF]/15 transition-all"
@@ -310,7 +310,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. 2 Weeks / End of Month"
+                        placeholder="e.g. 2 Days / End of weeks"
                         value={deadline}
                         onChange={(e) => setDeadline(e.target.value)}
                         className="w-full rounded-xl border border-[#E8EAF0] bg-[#F8F9FB] px-4 py-3 text-sm text-[#15171C] outline-none focus:border-[#635BFF] focus:bg-white focus:ring-2 focus:ring-[#635BFF]/15 transition-all"
