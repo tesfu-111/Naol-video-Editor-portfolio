@@ -1,0 +1,168 @@
+{
+  "entities": {
+    "siteSettings": {
+      "title": "SiteSettings",
+      "description": "Configuration document storing website settings, homepage hero configuration, and contact details.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "heroBgMode": { "type": "string", "enum": ["image", "video"] },
+        "heroImageUrl": { "type": "string", "maxLength": 1000 },
+        "heroVideoUrl": { "type": "string", "maxLength": 1000 },
+        "heroHeadline": { "type": "string", "maxLength": 300 },
+        "heroSubtitle": { "type": "string", "maxLength": 300 },
+        "primaryBtnText": { "type": "string", "maxLength": 100 },
+        "secondaryBtnText": { "type": "string", "maxLength": 100 },
+        "siteName": { "type": "string", "maxLength": 100 },
+        "logoText": { "type": "string", "maxLength": 100 },
+        "seoTitle": { "type": "string", "maxLength": 200 },
+        "seoDescription": { "type": "string", "maxLength": 500 },
+        "accentColor": { "type": "string", "maxLength": 50 },
+        "aboutPortraitUrl": { "type": "string", "maxLength": 1000 },
+        "aboutBio": { "type": "string", "maxLength": 4000 },
+        "aboutExperience": { "type": "string", "maxLength": 2000 },
+        "aboutSpecialties": { "type": "string", "maxLength": 1000 },
+        "aboutSkills": { "type": "string", "maxLength": 1000 },
+        "aboutCreativeProcess": { "type": "string", "maxLength": 3000 },
+        "aboutLocation": { "type": "string", "maxLength": 200 },
+        "aboutAvailability": { "type": "string", "maxLength": 200 },
+        "aboutResumeUrl": { "type": "string", "maxLength": 1000 },
+        "contactEmail": { "type": "string", "maxLength": 200 },
+        "contactWhatsapp": { "type": "string", "maxLength": 200 },
+        "contactTelegram": { "type": "string", "maxLength": 200 },
+        "contactInstagram": { "type": "string", "maxLength": 200 },
+        "contactTiktok": { "type": "string", "maxLength": 200 },
+        "contactYoutube": { "type": "string", "maxLength": 200 },
+        "contactLinkedin": { "type": "string", "maxLength": 200 },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id"]
+    },
+    "portfolioProject": {
+      "title": "PortfolioProject",
+      "description": "Video editor portfolio project showcase entry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 3000 },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Short-Form Content",
+            "YouTube Editing",
+            "Reels and TikTok",
+            "Music Videos",
+            "Cinematic Edits",
+            "Promotional Videos",
+            "Motion Graphics",
+            "Color Grading"
+          ]
+        },
+        "thumbnail": { "type": "string", "maxLength": 1000 },
+        "previewVideo": { "type": "string", "maxLength": 1000 },
+        "fullVideoSource": { "type": "string", "maxLength": 1000 },
+        "videoType": { "type": "string", "enum": ["direct", "youtube", "vimeo", "mp4", "drive"] },
+        "clientName": { "type": "string", "maxLength": 200 },
+        "editingSoftware": { "type": "string", "maxLength": 200 },
+        "projectDate": { "type": "string", "maxLength": 100 },
+        "published": { "type": "boolean" },
+        "featured": { "type": "boolean" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "category", "fullVideoSource", "published"]
+    },
+    "service": {
+      "title": "Service",
+      "description": "Post-production video service offering.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" },
+        "title": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string", "maxLength": 100 },
+        "showPricing": { "type": "boolean" },
+        "priceEstimate": { "type": "string", "maxLength": 100 },
+        "features": { "type": "string", "maxLength": 1000 },
+        "order": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "title", "description"]
+    },
+    "contactInquiry": {
+      "title": "ContactInquiry",
+      "description": "Incoming client booking or project inquiry.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" },
+        "fullName": { "type": "string", "maxLength": 200 },
+        "email": { "type": "string", "maxLength": 200 },
+        "company": { "type": "string", "maxLength": 200 },
+        "requestedService": { "type": "string", "maxLength": 200 },
+        "budget": { "type": "string", "maxLength": 100 },
+        "deadline": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 3000 },
+        "referenceLink": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["new", "reviewed", "archived"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "fullName", "email", "description", "status"]
+    },
+    "mediaAsset": {
+      "title": "MediaAsset",
+      "description": "Uploaded media metadata reference.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" },
+        "name": { "type": "string", "maxLength": 300 },
+        "originalName": { "type": "string", "maxLength": 300 },
+        "fileType": { "type": "string", "maxLength": 100 },
+        "size": { "type": "number" },
+        "url": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string", "enum": ["image", "video", "document"] },
+        "uploadedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "url", "category"]
+    },
+    "admin": {
+      "title": "Admin",
+      "description": "Designated administrator record.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "pattern": "^[a-zA-Z0-9_-]+$" },
+        "email": { "type": "string", "maxLength": 200 },
+        "role": { "type": "string", "enum": ["admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/siteSettings/{settingId}": {
+      "schema": "siteSettings",
+      "description": "Global website settings, homepage configuration, about me info, and contact details."
+    },
+    "/portfolioProjects/{projectId}": {
+      "schema": "portfolioProject",
+      "description": "Video editor portfolio projects with metadata, categories, and video URLs."
+    },
+    "/services/{serviceId}": {
+      "schema": "service",
+      "description": "Video editing and post-production service offerings."
+    },
+    "/contactInquiries/{inquiryId}": {
+      "schema": "contactInquiry",
+      "description": "Client contact submissions and project inquiries."
+    },
+    "/mediaAssets/{assetId}": {
+      "schema": "mediaAsset",
+      "description": "Uploaded media assets such as images, videos, and resume files."
+    },
+    "/admins/{adminId}": {
+      "schema": "admin",
+      "description": "Authorized administrators with elevated management permissions."
+    }
+  }
+}

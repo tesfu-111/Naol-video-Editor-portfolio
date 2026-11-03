@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == 'tesfukebe000@gmail.com'
+      );
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Admins Collection
+    match /admins/{adminId} {
+      allow read: if isAdmin();
+      allow write: if isAdmin() && isValidId(adminId);
+    }
+
+    // Site Settings Collection
+    match /siteSettings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(settingId);
+    }
+
+    // Portfolio Projects
+    match /portfolioProjects/{projectId} {
+      allow get: if isValidId(projectId) && (isAdmin() || (resource != null && resource.data.published == true));
+      allow list: if isAdmin() || resource.data.published == true;
+      allow create: if isAdmin() && isValidId(projectId) &&
+        incoming().title is string && incoming().title.size() <= 200 &&
+        incoming().category is string &&
+        incoming().fullVideoSource is string && incoming().fullVideoSource.size() <= 1000 &&
+        incoming().published is bool;
+      allow update: if isAdmin() && isValidId(projectId);
+      allow delete: if isAdmin() && isValidId(projectId);
+    }
+
+    // Services
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(serviceId);
+    }
+
+    // Contact Inquiries
+    match /contactInquiries/{inquiryId} {
+      allow read, list, update, delete: if isAdmin();
+      allow create: if isValidId(inquiryId) &&
+        incoming().fullName is string && incoming().fullName.size() > 0 && incoming().fullName.size() <= 200 &&
+        incoming().email is string && incoming().email.size() > 0 && incoming().email.size() <= 200 &&
+        incoming().description is string && incoming().description.size() > 0 && incoming().description.size() <= 3000 &&
+        incoming().status == 'new';
+    }
+
+    // Media Assets
+    match /mediaAssets/{assetId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(assetId);
+    }
+  }
+}
